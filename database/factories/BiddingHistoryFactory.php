@@ -7,9 +7,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CurrentBit>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BiddingHistory>
  */
-class CurrentBitFactory extends Factory
+class BiddingHistoryFactory extends Factory
 {
     /**
      * Define the model's default state.

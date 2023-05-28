@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id'=>User::all()->random()->id,
+            'name'=>$this->faker->name(),
+            'img'=>$this->faker->name(),
+            'bidmargin'=>$this->faker->numberBetween(10000,20000),
+            'description'=>$this->faker->paragraph(2)
         ];
     }
 }

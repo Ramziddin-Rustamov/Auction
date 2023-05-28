@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\CurrentBit;
+use App\Models\BiddingHistory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CurrentBitSeeder extends Seeder
+class BiddingHistorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class CurrentBitSeeder extends Seeder
      */
     public function run()
     {
-        CurrentBit::factory(20)->create();
+        BiddingHistory::factory(20)->create();
     }
 }

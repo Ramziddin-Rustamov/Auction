@@ -11,22 +11,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
-    /**
-         * @OA\Get(
-         *     path="/home",
-         *     summary="Get current user",
-         *     description="Returns information about the current user if the request is authenticated",
-         *     @OA\Response(
-         *         response=200,
-         *         description="Everything OK"
-         *     ),
-         *     @OA\Response(
-         *         response=403,
-         *         description="Access Denied"
-         *     )
-         * )
-    */
+    
     public function index()
     {
         return view('home');
