@@ -9,14 +9,14 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/login": {
+        "/login": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Post a new data",
                 "description": "Post new University  data",
-                "operationId": "44212a9096e4b09358281e9ec8a0701d",
+                "operationId": "1831d05b4f51813769172f8ebe0044b5",
                 "requestBody": {
                     "description": "Pass Auth   credentials",
                     "required": true,
@@ -84,14 +84,14 @@
                 ]
             }
         },
-        "/api/register": {
+        "/v1/register": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Post a new data",
                 "description": "Post new user data",
-                "operationId": "a718f172ff3ac464d723835815f8fb57",
+                "operationId": "9f2c210e9e11a13335b03c7e02a95215",
                 "requestBody": {
                     "description": "Pass Auth   credentials",
                     "required": true,
@@ -168,12 +168,7 @@
                     "403": {
                         "description": "Forbidden"
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
+                }
             }
         },
         "/api/logout": {
@@ -183,7 +178,7 @@
                 ],
                 "summary": "Post a new data",
                 "description": "Logout  data",
-                "operationId": "79854151e609bd20032aa5aa4d5a35c0",
+                "operationId": "e6a758d5d5373f9421674724f39f3e57",
                 "requestBody": {
                     "description": "Logout ",
                     "required": true

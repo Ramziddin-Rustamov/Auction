@@ -14,6 +14,12 @@ class BiddingHistoryResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+             'user_id' => $this->user,
+             'product_id' => $this->product,
+             'price' => $this->price,
+             'created_at' => $this->created_at,
+        ];
     }
 }

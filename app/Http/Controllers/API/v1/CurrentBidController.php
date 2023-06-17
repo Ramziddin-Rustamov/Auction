@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\v1;
 
-use App\Models\BiddingHistory;
+use App\Models\CurrentBid;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class BiddingHistoryController extends Controller
+class CurrentBidController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class BiddingHistoryController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -42,10 +42,10 @@ class BiddingHistoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BiddingHistory  $biddingHistory
+     * @param  \App\Models\CurrentBid  $CurrentBid
      * @return \Illuminate\Http\Response
      */
-    public function show(BiddingHistory $biddingHistory)
+    public function show(CurrentBid $CurrentBid)
     {
         //
     }
@@ -53,10 +53,10 @@ class BiddingHistoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BiddingHistory  $biddingHistory
+     * @param  \App\Models\CurrentBid  $CurrentBid
      * @return \Illuminate\Http\Response
      */
-    public function edit(BiddingHistory $biddingHistory)
+    public function edit(CurrentBid $CurrentBid)
     {
         //
     }
@@ -65,10 +65,10 @@ class BiddingHistoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BiddingHistory  $biddingHistory
+     * @param  \App\Models\CurrentBid  $CurrentBid
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BiddingHistory $biddingHistory)
+    public function update(Request $request, CurrentBid $CurrentBid)
     {
         //
     }
@@ -76,10 +76,10 @@ class BiddingHistoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BiddingHistory  $biddingHistory
+     * @param  \App\Models\CurrentBid  $CurrentBid
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BiddingHistory $biddingHistory)
+    public function destroy(CurrentBid $CurrentBid)
     {
         //
     }

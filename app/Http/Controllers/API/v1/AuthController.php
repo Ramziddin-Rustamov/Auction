@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\v1;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +19,7 @@ class AuthController extends Controller
             /**
      * * * * * *  * * * *  * * * * * *
      * @OA\Post(
-     * path="/api/login",
+     * path="/v1/login",
      * summary="Post a new data",
      *  security={
      *         {"bearer": {}}
@@ -101,12 +101,9 @@ class AuthController extends Controller
         /**
      * * * * * *  * * * *  * * * * * *
      * @OA\Post(
-     * path="/api/register",
+     * path="/v1/register",
      * summary="Post a new data",
      * description="Post new user data",
-     *  *  security={
-     *         {"bearer": {}}
-     *     },
      * tags={"Auth"},
      * 
      * @OA\RequestBody(
@@ -186,7 +183,7 @@ class AuthController extends Controller
             /**
      * * * * * *  * * * *  * * * * * *
      * @OA\Post(
-     * path="/api/logout",
+     * path="/v1/logout",
      * summary="Post a new data",
      *  security={
      *         {"bearer": {}}
