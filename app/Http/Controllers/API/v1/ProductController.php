@@ -19,7 +19,7 @@ class ProductController extends Controller
         'status'=>'error',
         'status_code'=>404
     ];
-    /**
+    /*
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -55,7 +55,7 @@ class ProductController extends Controller
         return new ProductResponse($product);
     }
 
-    /**
+    /*
      * Display the specified resource.
      *
      * @param  \App\Models\Product  $product
@@ -70,7 +70,7 @@ class ProductController extends Controller
         return $this->error;
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Product  $product
@@ -81,7 +81,7 @@ class ProductController extends Controller
         // 
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -98,7 +98,7 @@ class ProductController extends Controller
         return $this->error;
     }
 
-    /**
+    /*
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Product  $product

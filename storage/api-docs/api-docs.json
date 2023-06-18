@@ -1,22 +1,22 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "World UZ",
-        "description": "Documentation for World Uz Company",
+        "title": "Auction",
+        "description": "Documentation Auction web ",
         "contact": {
-            "email": "rustamovramziddin7@gmail.com"
+            "email": "rustamovvramziddin@gmail.com"
         },
         "version": "1.0.0"
     },
     "paths": {
-        "/login": {
+        "/v1/login": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Post a new data",
                 "description": "Post new University  data",
-                "operationId": "1831d05b4f51813769172f8ebe0044b5",
+                "operationId": "3baa3b145384161275c3581002c9225f",
                 "requestBody": {
                     "description": "Pass Auth   credentials",
                     "required": true,
@@ -171,14 +171,14 @@
                 }
             }
         },
-        "/api/logout": {
+        "/v1/logout": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Post a new data",
                 "description": "Logout  data",
-                "operationId": "e6a758d5d5373f9421674724f39f3e57",
+                "operationId": "0c6d22e05b701dd1f04b4421293a432f",
                 "requestBody": {
                     "description": "Logout ",
                     "required": true
@@ -221,6 +221,249 @@
                         "bearer": []
                     }
                 ]
+            }
+        },
+        "/v1/bidding-history": {
+            "get": {
+                "tags": [
+                    "Bidding-History"
+                ],
+                "summary": "Return only fields ",
+                "description": "Get all data",
+                "operationId": "32a962ada99ad94703bc5998a6a8f006",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bidding-History"
+                ],
+                "summary": "Post a new data",
+                "description": "Post new user data",
+                "operationId": "15fd5db4b8a17e0525cdcc3e02e7f698",
+                "requestBody": {
+                    "description": "Pass Bid history   credentials",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "product_id",
+                                    "price"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "number",
+                                        "format": "text",
+                                        "example": "1"
+                                    },
+                                    "product_id": {
+                                        "type": "number",
+                                        "format": "",
+                                        "example": "1"
+                                    },
+                                    "price": {
+                                        "type": "text",
+                                        "format": "text",
+                                        "example": "$12000"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/v1/bidding-history/{bidding-history}": {
+            "get": {
+                "tags": [
+                    "Bidding-History"
+                ],
+                "summary": "Get one ",
+                "description": "Return all date related to ID{bid id}",
+                "operationId": "acff0344c7dac34ee6a73366b1370b50",
+                "parameters": [
+                    {
+                        "name": "bidding-history",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Bidding-History"
+                ],
+                "summary": "Update ",
+                "description": "Returns columns of cart belongs to Branch",
+                "operationId": "Update",
+                "parameters": [
+                    {
+                        "name": "bidding-history",
+                        "in": "path",
+                        "description": "bidding history update ",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Update bid History",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "product_id",
+                                    "price"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "number",
+                                        "format": "text",
+                                        "example": "1"
+                                    },
+                                    "product_id": {
+                                        "type": "number",
+                                        "format": "text",
+                                        "example": "2"
+                                    },
+                                    "price": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "$4000"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Branch created successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bidding-History"
+                ],
+                "summary": "Get one and Delete related to Bid id",
+                "description": "Return  date related to ID of the Bid",
+                "operationId": "890f8cdae245e8d05555dc4a0d72019e",
+                "parameters": [
+                    {
+                        "name": "bidding-history",
+                        "in": "path",
+                        "description": "put bid id and try to delete ",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
             }
         }
     },

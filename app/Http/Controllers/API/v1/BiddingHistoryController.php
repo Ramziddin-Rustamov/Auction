@@ -18,6 +18,31 @@ class BiddingHistoryController extends Controller
         'status_code'=>404
     ];
 
+     /**
+     * * * * * *  * * * *  * * * * * *
+     * @OA\Get(
+     * path="/v1/bidding-history",
+     * summary="Return only fields ",
+     * description="Get all data",
+     * tags={"Bidding-History"},
+     *       @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *           @OA\MediaType(
+     *             mediaType="application/json",
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     * )
+     * 
+     */
     /*
      * Display a listing of the resource.
      *
@@ -39,17 +64,95 @@ class BiddingHistoryController extends Controller
         //
     }
 
-    /*
-     * Store a newly created resource in storage.
+    
+    /**
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @OA\Post(
+     * path="/v1/bidding-history",
+     * summary="Post a new data",
+     * description="Post new user data",
+     * tags={"Bidding-History"},
+     * 
+     * @OA\RequestBody(
+     *    required=true,
+     *    description="Pass Bid history   credentials",
+     *    @OA\MediaType(
+     *       mediaType="multipart/form-data",
+     *       @OA\Schema(
+     *       type="object",
+     *       required={"user_id","product_id","price"},
+     *       @OA\Property(property="user_id", type="number", format="text", example="1"),
+     *       @OA\Property(property="product_id", type="number", format="",example="1"),
+     *       @OA\Property(property="price", type="text", format="text", example="$12000")
+     *      )
+     *    ),
+     * ),
+     * @OA\Response(
+     *    response=422,
+     *    description="Wrong credentials response",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="The given data was invalid.")
+     *        )
+     *     ),
+     *    @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *            @OA\MediaType(
+     *             mediaType="application/json",
+     *         ),
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
      */
+
     public function store(Request $request, BiddingHistoryRequest $biddingHistoryRequest)
     {
         $biddingHistory = BiddingHistory::create($biddingHistoryRequest->validated());
         return $biddingHistory;
     }
+
+       /**
+     * * * * * *  * * * *  * * * * * *
+     * @OA\Get(
+     * path="/v1/bidding-history/{bidding-history}",
+     * summary="Get one ",
+     * description="Return all date related to ID{bid id}",
+     * tags={"Bidding-History"},
+     *  @OA\Parameter(name="bidding-history", in="path", description="ID", required=true,
+     *        @OA\Schema(type="integer")
+     *    ),
+     *    @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *            @OA\MediaType(
+     *             mediaType="application/json",
+     *         ),
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
 
     /*
      * Display the specified resource.
@@ -77,6 +180,39 @@ class BiddingHistoryController extends Controller
         //
     }
 
+    /**
+     *  @OA\Put (
+     *      path="/v1/bidding-history/{id}",
+     *      tags={"Bidding-History"},
+     *      operationId="Update",
+     *      summary="Update ",
+     *      @OA\Parameter (description="bidding history update ",in="path",name="id",
+     *      required=true,example="1", 
+     *       @OA\Schema(type="integer")),
+     *      description="Returns updated Bid",
+     *      @OA\RequestBody(
+     *          required=true,
+     *          description="Update bid History",
+     *          @OA\JsonContent(
+     *          required={"user_id","product_id","price"},
+     *          @OA\Property(property="user_id", type="number", format="text", example="5"),
+     *          @OA\Property(property="product_id", type="number", format="text", example="4"),
+     *          @OA\Property(property="price", type="string", format="text",example="$4000"),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status", type="string", example="success"),
+     *              @OA\Property(property="message", type="string", example="Bid Updated successfully"),
+     *          ),
+     *      ),
+
+     * )
+     * 
+     */
+
     /*
      * Update the specified resource in storage.
      *
@@ -86,13 +222,52 @@ class BiddingHistoryController extends Controller
      */
     public function update(Request $request,  $biddingHistory, BiddingHistoryRequest $biddingHistoryRequest)
     {
-        $update = BiddingHistory::find($biddingHistory);
-        if($update){
-           $updated =  $update->update($biddingHistoryRequest->validated());
-           return new BiddingHistoryResource($updated);
+        $updated = BiddingHistory::find($biddingHistory);
+        if($updated){
+        if($biddingHistoryRequest->validated()){
+            $updated->user_id = $request->user_id;
+            $updated->product_id = $request->product_id;
+            $updated->price = $request->price;
+            $updated->save();
+            return new BiddingHistoryResource($updated);
+            }
+            return response()->json([
+                'message'=>'Validation error'
+            ]);
         }
         return $this->error;
     }
+
+           /**
+     * * * * * *  * * * *  * * * * * *
+     * @OA\Delete(
+     * path="/v1/bidding-history/{bidding-history}",
+     * summary="Get one and Delete related to Bid id",
+     * description="Return  date related to ID of the Bid",
+     * tags={"Bidding-History"},
+     * 
+     * *@OA\Parameter(name="bidding-history", in="path", description="put bid id and try to delete ", required=true,
+     *       @OA\Schema(type="integer")
+     *  ),
+     *   @OA\Response(
+     *          response=204,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
+     */
 
     /*
      * Remove the specified resource from storage.
@@ -106,6 +281,10 @@ class BiddingHistoryController extends Controller
         $delete = BiddingHistory::find($biddingHistory);
         if($delete){
             $delete->delete();
+            return response()->json([
+                'message'=>'Deleted successfully',
+                'status'=>200
+            ]);
         }
         return $this->error;
       }catch(Exception $e){

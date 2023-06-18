@@ -4,7 +4,7 @@ namespace App\Http\Resources\API\V1;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CurrentBitResource extends JsonResource
+class CurrentBidResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

@@ -9,10 +9,10 @@ use Illuminate\Routing\Controller as BaseController;
         /** 
      * @OA\Info(
      *      version="1.0.0",
-     *      title="World UZ",
-     *      description="Documentation for World Uz Company",
+     *      title="Auction",
+     *      description="Documentation Auction web ",
      *      @OA\Contact(
-     *          email="rustamovramziddin7@gmail.com"
+     *          email="rustamovvramziddin@gmail.com"
      *      ),
      * ),
      * 
@@ -30,6 +30,18 @@ use Illuminate\Routing\Controller as BaseController;
      *  @OA\Tags(
      *  name="Auth",
      *  description="This is a Auth docs",
+     * ),
+     * *  @OA\Tags(
+     *  name="Bidding-History",
+     *  description="This is bidding history model ",
+     * ),
+     *   @OA\Tags(
+     *  name="Current-Bid",
+     *  description="This is Current Bid model ",
+     * ),
+     *  @OA\Tags(
+     *  name="Product",
+     *  description="This is Product model ",
      * ),
      * 
      */
